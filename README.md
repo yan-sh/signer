@@ -47,7 +47,7 @@ pay :: Centi -> IO ()
 pay salary =
   case check (wrap salary) of
     Nothing -> pure ()
-    Just signedSalary -> paySafe 
+    Just signedSalary -> paySafe signedSalary
   where check = mkGreaterThan Proxy >=> mkLessThan Proxy
 
 ===============================================================================
