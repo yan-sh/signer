@@ -26,13 +26,13 @@ data LessThan x = LessThan
 
 mkGreaterThan :: KnownNat n => Proxy n -> Signed Centi x -> Maybe (Signed Centi (GreaterThan n ': x))
 mkGreaterThan p s =
-  if case unsign s > fromInteger (natVal p) of
+  if unsign s > fromInteger (natVal p)
      then Just $ sign GreaterThan s
      else Nothing
 
 mkLessThan :: KnownNat n => Proxy n -> Signed Centi x -> Maybe (Signed Centi (LessThan n ': x))
 mkLessThan p s =
-  if case unsign s < fromInteger (natVal p) of
+  if unsign s < fromInteger (natVal p)
      then Just $ sign LessThan s
      else Nothing
 
